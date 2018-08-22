@@ -1,0 +1,17 @@
+driver: impg
+
+postgres:
+  user: postgres
+  password: postgres
+  host: 127.0.0.1
+  port: 5432
+  db: atlant
+  options: sslmode=disable
+
+migrate:
+  path: ./migrations/
+  table_name: migrations
+
+seed:
+  path: ./seeds/
+  table_name: seeds

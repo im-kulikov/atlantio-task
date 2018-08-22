@@ -1,0 +1,82 @@
+version: '2.2'
+
+services:
+  atlant:
+    build:
+      context: ./../../
+      dockerfile: dockerfiles/service.Dockerfile
+    container_name: dev_service
+    depends_on:
+      eth:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      migrations:
+        condition: service_started
+    ports:
+    - "21080:8080"
+    - "21081:9080"
+    - "21082:8090"
+    environment:
+      ATLANT_ETH_ADDRESS: http://eth:8545
+      ATLANT_POSTGRES_ADDRESS: postgres:5432
+      ATLANT_REDIS_ADDRESS: redis:6379
+
+  migrations:
+    build:
+      context: ./../../
+      dockerfile: dockerfiles/migrate.Dockerfile
+    container_name: dev_migrations
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: "all up"
+    environment:
+      MIGA_SEED_PATH: "/seeds/development"
+      MIGA_POSTGRES_USER: postgres
+      MIGA_POSTGRES_PASSWORD: postgres
+      MIGA_POSTGRES_HOST: postgres
+      MIGA_POSTGRES_PORT: 5432
+      MIGA_POSTGRES_DB: atlant
+      MIGA_POSTGRES_OPTIONS: sslmode=disable
+      MIGA_DRIVER: impg
+
+  postgres:
+    image: postgres:10.5-alpine
+    container_name: dev_postgres
+    ports:
+    - "21432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: atlant
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  redis:
+    image: redis:3.2-alpine
+    container_name: dev_redis
+    ports:
+    - "21379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+      interval: 30s
+      timeout: 1s
+      retries: 3
+
+  eth:
+    build: eth
+    container_name: dev_eth
+    hostname: eth
+    ports:
+    - "21545:8545"
+    healthcheck:
+      test: ["CMD","pidof","parity"]
+      interval: 10s
+      timeout: 3s
+      retries: 60

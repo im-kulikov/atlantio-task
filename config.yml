@@ -1,0 +1,54 @@
+pprof:
+  address: :6060
+
+metrics:
+  address: :8090
+
+api:
+  address: :8080
+  shutdown_timeout: 10s
+
+workers:
+  indexer:
+    ticker: 30s
+    expire: 1h
+    immediately: true
+    lock:
+      redis: redis
+      key: atlant_indexer_job
+      ttl: 15m
+
+store:
+  confirms: 3
+
+indexer:
+  chain_size: 20
+  sync_timeout: 10s
+  addresses:
+    - 0x00fc9af07fb2fcfc560672630b19bb8f72732164
+    - 0x006Db1ebe1D7da13Aa4B7523F7A4Ff123Cf98E58
+
+eth:
+  address: http://localhost:8545
+  debug: false
+  block_timeout: 10s
+  send_timeout: 10s
+
+log:
+  level: debug
+  format: console
+
+postgres:
+  address: 127.0.0.1:5432
+  database: atlant
+  username: postgres
+  password: postgres
+  debug: false
+  pool_size: 10
+
+redis:
+  address: 127.0.0.1:6379
+  database: 0
+  password:
+  pool_size: 10
+  pool_timeout: 3
