@@ -42,6 +42,8 @@ services:
       MIGA_POSTGRES_DB: atlant
       MIGA_POSTGRES_OPTIONS: sslmode=disable
       MIGA_DRIVER: impg
+      MIGA_SEED_TABLE_NAME: seeds
+      MIGA_MIGRATE_TABLE_NAME: migrations
 
   postgres:
     image: postgres:10.5-alpine
