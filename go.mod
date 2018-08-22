@@ -4,7 +4,6 @@ require (
 	github.com/BurntSushi/toml v0.3.0 // indirect
 	github.com/chapsuk/mserv v0.0.0-20180706125941-107033951ceb
 	github.com/chapsuk/worker v0.4.0
-	github.com/davecgh/go-spew v1.1.0
 	github.com/ethereum/go-ethereum v1.8.13
 	github.com/go-pg/pg v6.14.3+incompatible
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b // indirect

@@ -3,7 +3,6 @@ package indexer
 import (
 	"context"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/im-kulikov/atlantio-task/app/eth"
 	"github.com/im-kulikov/atlantio-task/app/store"
 	"github.com/pkg/errors"
@@ -182,7 +181,6 @@ func (t *task) logResult() {
 	case errNothingToSync: // ignore
 	case eth.ErrBlockNotFound: // ignore
 	default:
-		spew.Dump(t.err)
 		t.log.Errorw("job failed",
 			"new_blocks", t.tbn-t.sbn,
 			"store_block", t.sbn,
