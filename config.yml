@@ -9,20 +9,17 @@ api:
   shutdown_timeout: 10s
 
 workers:
-  indexer:
-    ticker: 30s
-    expire: 1h
-    immediately: true
-    lock:
-      redis: redis
-      key: atlant_indexer_job
-      ttl: 15m
+  sync_store:
+    immediately: true # just run once on start
+  sync_blocks:
+    immediately: true # just run once on start
 
 store:
   confirms: 3
 
 indexer:
   chain_size: 20
+  scan_timeout: 10s
   sync_timeout: 10s
   addresses:
     - 0x00fc9af07fb2fcfc560672630b19bb8f72732164

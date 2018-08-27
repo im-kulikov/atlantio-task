@@ -28,19 +28,19 @@ type (
 	Params struct {
 		dig.In
 
-		Context context.Context // graceful.Context
-		Client  *eth.Client
-		Config  *Config
-		Logger  *zap.SugaredLogger
-		Store   *store.Store
-		Viper   *viper.Viper
+		Client *eth.Client
+		Config *Config
+		Logger *zap.SugaredLogger
+		Store  *store.Store
+		Viper  *viper.Viper
 	}
 
 	// Config is worker settings
 	Config struct {
-		Addresses []string
-		ChainSize int
-		Timeout   time.Duration
+		Addresses   []string
+		ChainSize   int
+		ScanTimeout time.Duration
+		SyncTimeout time.Duration
 	}
 )
 
@@ -72,12 +72,14 @@ func NewConfig(v *viper.Viper) (*Config, error) {
 	}
 
 	v.SetDefault("indexer.chain_size", 100)
+	v.SetDefault("indexer.scan_timeout", time.Second*5)
 	v.SetDefault("indexer.sync_timeout", time.Second*5)
 
 	return &Config{
-		Addresses: addresses,
-		ChainSize: v.GetInt("indexer.chain_size"),
-		Timeout:   v.GetDuration("indexer.sync_timeout"),
+		Addresses:   addresses,
+		ChainSize:   v.GetInt("indexer.chain_size"),
+		ScanTimeout: v.GetDuration("indexer.scan_timeout"),
+		SyncTimeout: v.GetDuration("indexer.sync_timeout"),
 	}, nil
 }
 
@@ -91,15 +93,12 @@ func NewIndexer(params Params) *Indexer {
 		chain: make(chan interface{}, params.Config.ChainSize),
 	}
 
-	// run background job to sync store:
-	go i.syncStore(params.Context)
-
 	return i
 }
 
-// receive messages from channel and try to sync with store
-func (i *Indexer) syncStore(ctx context.Context) {
-	td := time.NewTicker(i.cfg.Timeout)
+// SyncStore receive messages from channel and try to sync with store
+func (i *Indexer) SyncStore(ctx context.Context) {
+	td := time.NewTicker(i.cfg.SyncTimeout)
 	defer td.Stop()
 
 	for {
@@ -135,11 +134,23 @@ func (i *Indexer) syncData(v interface{}) {
 	}
 }
 
-// Job to sync blocks and transactions:
-func (i *Indexer) Job(ctx context.Context) {
-	newTask(i). // create task
-			canScan(ctx).    // check internal data
-			scanBlocks(ctx). // scan blocks
-			storeData().     // store blocks and txs
-			logResult()      // log task results
+// SyncBlocks to sync blocks and transactions:
+func (i *Indexer) SyncBlocks(ctx context.Context) {
+	tick := time.NewTicker(i.cfg.ScanTimeout)
+	for {
+		select {
+		// context canceled - exit
+		case <-ctx.Done():
+			i.log.Info("indexer: stop sync, context canceled")
+			i.chain = nil
+			return
+		// run task
+		case <-tick.C:
+			newTask(i). // create task
+					canScan(ctx).    // check internal data
+					scanBlocks(ctx). // scan blocks
+					storeData().     // store blocks and txs
+					logResult()      // log task results
+		}
+	}
 }

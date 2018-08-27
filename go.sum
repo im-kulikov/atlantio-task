@@ -6,8 +6,7 @@ github.com/bouk/monkey v0.0.0-20180215074647-5df1f207ff77 h1:6roAmyxOtHEG1u0Z3hg
 github.com/bouk/monkey v0.0.0-20180215074647-5df1f207ff77/go.mod h1:PG/63f4XEUlVyW1ttIeOJmJhhe1+t9EC/je3eTjvFhE=
 github.com/bsm/redis-lock v8.0.0+incompatible h1:QgB0J2pNG8hUfndTIvpPh38F5XsUTTvO7x8Sls++9Mk=
 github.com/bsm/redis-lock v8.0.0+incompatible/go.mod h1:8dGkQ5GimBCahwF2R67tqGCJbyDZSp0gzO7wq3pDrik=
-github.com/chapsuk/mserv v0.0.0-20180706125941-107033951ceb h1:gxTPx34M7WOaOhH3D1ND3AgslkyYsncuSDq0SfgNVoY=
-github.com/chapsuk/mserv v0.0.0-20180706125941-107033951ceb/go.mod h1:owGVdOwsWoIgFzpfKh22N0MvngA4itSFPWE5KdhaDPc=
+github.com/chapsuk/mserv v0.3.1/go.mod h1:owGVdOwsWoIgFzpfKh22N0MvngA4itSFPWE5KdhaDPc=
 github.com/chapsuk/wait v0.0.0-20180530144602-2dc40db0485b h1:ldHjyhAOZP1lCiUs+1W7H4OORZRrMYWrD6aoPFN876c=
 github.com/chapsuk/wait v0.0.0-20180530144602-2dc40db0485b/go.mod h1:NC0xxH0aNuAwaM/KZ/cB188PLbpHG60Dm7yNM71uDH4=
 github.com/chapsuk/worker v0.4.0 h1:mYXR1sKeZa4HqVPAXPKpjZG0AkU0f+NnWiQ2xfJUlmc=
@@ -36,14 +35,12 @@ github.com/hashicorp/hcl v0.0.0-20180404174102-ef8a98b0bbce h1:xdsDDbiBDQTKASoGE
 github.com/hashicorp/hcl v0.0.0-20180404174102-ef8a98b0bbce/go.mod h1:oZtUIOe8dh44I2q6ScRibXws4Ajl+d+nod3AaR9vL5w=
 github.com/hpcloud/tail v1.0.0 h1:nfCOvKYfkgYP8hkirhJocXT2+zOD8yUNjXaWfTlyFKI=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
-github.com/im-kulikov/helium v0.5.6 h1:734+PTk8ukif48Uv9nz2CXTyR5VocEjRyNzUKE7y1jY=
-github.com/im-kulikov/helium v0.5.6/go.mod h1:EG6ujeLbRhAzPDKFlxKFnxvWj69WFXNX9bKSu/l5mk0=
+github.com/im-kulikov/helium v0.5.8/go.mod h1:DdEerrAdEymk5+cNadylOZ9qM/NLn1RgB0UzKxuWMQM=
 github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a h1:eeaG9XMUvRBYXJi4pg1ZKM7nxc5AfXfojeLLW7O5J3k=
 github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jtolds/gls v4.2.1+incompatible h1:fSuqC+Gmlu6l/ZYAoZzx2pyucC8Xza35fpRVWLVmUEE=
 github.com/jtolds/gls v4.2.1+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
-github.com/labstack/echo v0.0.0-20180412143600-6d227dfea4d2 h1:4VNLf+IgSES2mEa6UEjNJRaHLudI75mB0aJDkRpHpv0=
-github.com/labstack/echo v0.0.0-20180412143600-6d227dfea4d2/go.mod h1:0INS7j/VjnFxD4E2wkz67b8cVwCLbBmJyDaka6Cmk1s=
+github.com/labstack/echo v3.2.2-0.20180412143600-6d227dfea4d2+incompatible/go.mod h1:0INS7j/VjnFxD4E2wkz67b8cVwCLbBmJyDaka6Cmk1s=
 github.com/labstack/gommon v0.0.0-20180613044413-d6898124de91 h1:6R2WAx0PYNGtK2ZED9xKlTGEha51GsCFZijom+NMGEk=
 github.com/labstack/gommon v0.0.0-20180613044413-d6898124de91/go.mod h1:/tj9csK2iPSBvn+3NLM9e52usepMtrd5ilFYA+wQNJ4=
 github.com/magiconair/properties v1.8.0 h1:LLgXmsheXeRoUOBOjtwPQCWIYqM/LU1ayDtDePerRcY=
@@ -56,6 +53,7 @@ github.com/matttproud/golang_protobuf_extensions v1.0.1 h1:4hp9jkHxhMHkqkrB3Ix0j
 github.com/matttproud/golang_protobuf_extensions v1.0.1/go.mod h1:D8He9yQNgCq6Z5Ld7szi9bcBfOoFv/3dc6xSMkL2PC0=
 github.com/mitchellh/mapstructure v0.0.0-20180715050151-f15292f7a699 h1:KXZJFdun9knAVAR8tg/aHJEr5DgtcbqyvzacK+CDCaI=
 github.com/mitchellh/mapstructure v0.0.0-20180715050151-f15292f7a699/go.mod h1:FVVH3fgwuzCH5S8UJGiWEs2h04kUh9fWfEaFds41c1Y=
+github.com/nats-io/gnatsd v1.2.0/go.mod h1:nqco77VO78hLCJpIcVfygDP2rPGfsEHkGTUk94uh5DQ=
 github.com/nats-io/go-nats v1.5.0/go.mod h1:+t7RHT5ApZebkrQdnn6AhQJmhJJiKAvJUio1PiiCtj0=
 github.com/nats-io/nuid v1.0.0/go.mod h1:19wcPz3Ph3q0Jbyiqsd0kePYG7A95tJPxeL+1OSON2c=
 github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32 h1:W6apQkHrMkS0Muv8G/TipAy/FJl/rCYT0+EuS8+Z0z4=

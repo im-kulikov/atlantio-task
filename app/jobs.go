@@ -16,6 +16,7 @@ type JobsParams struct {
 func NewJobs(params JobsParams) map[string]worker.Job {
 	return map[string]worker.Job{
 		// add some workers
-		"indexer": params.Indexer.Job, // sync blocks
+		"sync_store":  params.Indexer.SyncStore,  // sync store
+		"sync_blocks": params.Indexer.SyncBlocks, // sync blocks
 	}
 }

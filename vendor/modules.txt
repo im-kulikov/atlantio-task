@@ -2,7 +2,7 @@
 github.com/beorn7/perks/quantile
 # github.com/bsm/redis-lock v8.0.0+incompatible
 github.com/bsm/redis-lock
-# github.com/chapsuk/mserv v0.0.0-20180706125941-107033951ceb
+# github.com/chapsuk/mserv v0.3.1
 github.com/chapsuk/mserv
 # github.com/chapsuk/wait v0.0.0-20180530144602-2dc40db0485b
 github.com/chapsuk/wait
@@ -54,7 +54,7 @@ github.com/hashicorp/hcl/hcl/scanner
 github.com/hashicorp/hcl/hcl/strconv
 github.com/hashicorp/hcl/json/scanner
 github.com/hashicorp/hcl/json/token
-# github.com/im-kulikov/helium v0.5.6
+# github.com/im-kulikov/helium v0.5.8
 github.com/im-kulikov/helium
 github.com/im-kulikov/helium/settings
 github.com/im-kulikov/helium/grace
@@ -68,7 +68,7 @@ github.com/im-kulikov/helium/workers
 github.com/jinzhu/inflection
 # github.com/jtolds/gls v4.2.1+incompatible
 github.com/jtolds/gls
-# github.com/labstack/echo v0.0.0-20180412143600-6d227dfea4d2
+# github.com/labstack/echo v3.2.2-0.20180412143600-6d227dfea4d2+incompatible
 github.com/labstack/echo
 # github.com/labstack/gommon v0.0.0-20180613044413-d6898124de91
 github.com/labstack/gommon/log

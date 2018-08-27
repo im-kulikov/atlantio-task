@@ -19,14 +19,15 @@ var Module = module.Module{
 	{Constructor: NewApplication},
 	{Constructor: NewJobs},
 	{Constructor: store.NewStore},
-}.
-	Append(settings.Module).   // Viper settings
-	Append(grace.Module).      // graceful context
-	Append(logger.Module).     // Zap Logger
-	Append(orm.Module).        // PostgreSQL connection
-	Append(workers.Module).    // Workers module
-	Append(web.ServersModule). // Web-servers module
-	Append(redis.Module).      // Redis connection
-	Append(eth.Module).        // Eth client
-	Append(indexer.Module).    // Indexer worker
-	Append(api.Module)         // API module
+}.Append(
+	settings.Module,   // Viper settings
+	grace.Module,      // graceful context
+	logger.Module,     // Zap Logger
+	orm.Module,        // PostgreSQL connection
+	workers.Module,    // Workers module
+	web.ServersModule, // Web-servers module
+	redis.Module,      // Redis connection
+	eth.Module,        // Eth client
+	indexer.Module,    // Indexer worker
+	api.Module,        // API module
+)
